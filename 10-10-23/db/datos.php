@@ -163,7 +163,7 @@
             ),
             array(
                 'cliente_dni' => '45678901E',
-                'juego_id' => '16', // ID del juego, por ejemplo, '16' pertenece a la categoría 'Deportes'
+                'juego_id' => '10', // ID del juego, por ejemplo, '16' pertenece a la categoría 'Deportes'
                 'precio' => 49.99,
                 'cantidad' => 3,
                 'fecha' => '2023-10-07 09:15:00'

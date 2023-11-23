@@ -24,16 +24,16 @@ class ClienteController implements Controller{
     }
 
     public static function save(){
-        /*if(isset($_POST)){
+        if(isset($_POST)){
             $cliente = array(
                 'nombre' => $_POST['nombre'],
                 'dni' => $_POST['dni'],
                 'telefono' => $_POST['telefono'],
                 'correo' => $_POST['correo']
             );
-            array_push($GLOBALS['clientes'], $cliente);
-        }*/
-        ClienteController::index();
+            array_push($GLOBALS['Clientes'], $cliente);
+        }
+        header('Location: ?controller=cliente&function=index');
     }
 
     public static function edit($id){

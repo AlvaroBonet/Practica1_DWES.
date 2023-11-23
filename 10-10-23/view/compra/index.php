@@ -25,12 +25,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php 
+                <?php
                     if(isset($GLOBALS['Compras'])){  
                         foreach ($GLOBALS['Compras'] as $id => $value) {
                             echo '<tr>';
                             echo '<td>'. ($id + 1) .'</td>';
-                            echo '<td>'.$value['cliente_dni'] .'</td>';
+                            foreach ($GLOBALS['Clientes'] as $key => $value1) {
+                                    /*var_dump($value1['dni']);
+                                    exit();*/
+                                    if($value1['dni'] == $value['cliente_dni']){
+                                        $nombre_cliente = $value1['nombre'];
+                                    }
+                            }
+                            echo '<td>'.$nombre_cliente .'</td>';
+                            foreach ($GLOBALS['Juegos'] as $key => $value1) {
+                                foreach ($value1 as $key2 => $value2) {
+                                    /*var_dump($value);
+                                    exit();*/
+                                    if($value2['id'] == $value['juego_id']){
+                                        $nombre_juego = $value2['nombre'];
+                                    }
+                                }
+                            }
                             echo '<td>'.$nombre_juego.'</td>';
                             echo '<td>'.$value['precio'] .'</td>';
                             echo '<td>'.$value['cantidad'] .'</td>'; 

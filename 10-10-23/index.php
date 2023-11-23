@@ -32,43 +32,16 @@ if(isset($_GET['controller']) && isset($_GET['function'])){
     # $function contiene 'index'
     $function = $_GET['function'];
     
-    // var_dump($controller);
-    // var_dump($function);
-
-    /**
-     * Una vez tengo el formato correcto de mi controllador y de mi funcion damos los siguientes paso:
-     * 1. Comprobar que existe el controlador.
-     * Opciones:
-     * - ¿Existe un fichero con nombre ClienteController?
-     * - ¿Existe una clase con nombre ClienteContoller?
-     * 
-     * 2. Comprobar que la existe la funcion dentro del controlador
-     */
-
-    /**
-      * Comprobamos si existe la classe con el nombre $controller.
-      * - Si existe, compruebo si hay una funcion dentro con el nombre $function
-      * - Si no existe, debemos hacer otra cosa (ERRRORRRR)
-      */
+    #existe?
     if (class_exists($controller)) {
-        
+        #existe funcion?
         if(method_exists($controller, $function)){
             if(isset($_GET['id'])){
                 # Introducir elementos array para especificar funcion concreta
                 $id = $_GET['id'];
                 call_user_func($controller .'::'.$function, $id);
             }else{
-                // var_dump('existe '. $function);
-            // exit();
-            # Ejecutar la funcion que esta dentro del controlador
-            /**
-             * OPCIONES
-             * - ClienteController->index();       -->Funcion static
-             * - new ClienteController()->index(); -->Funcion NO static
-             */
-            # Esta llamada ejecuta la funcion 'index' (contenida en $function) que esta dentro de
-            # ClientesController (el controlador $controller)
-            call_user_func($controller .'::'.$function);
+                call_user_func($controller .'::'.$function);
             }
             
         }else{
@@ -83,17 +56,4 @@ if(isset($_GET['controller']) && isset($_GET['function'])){
     include('view/index.php');
 }
 
-
-// Necesito transformar el contenido de la variable 'controller' en ClienteController
-
-/**
- * Necesito abrir la funcion index del controlador ClienteController
- */
-
- /**
-  * NOTA: SOBRE VOLVER AL INDEX.PHP
-  * A la hora de ir de una vista cualquiera al index.php (controlador frontal),
-  * revisar el uso de unset y el uso de parse_url para retirar las variables 
-  * de la URL y dejar unicamente el index.php sin interrogacion.
-  */
 ?>

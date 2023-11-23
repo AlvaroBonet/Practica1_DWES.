@@ -34,13 +34,18 @@ class JuegoController implements Controller{
     }
 
     public static function save(){
-        /*var_dump($_POST);
-        $nombre = $_POST['nombre'];
-        $dni = $_POST['dni'];
-        $telefono = $_POST['telefono'];
-        $correo = $_POST['correo'];
-        exit();*/
-        JuegoController::index();
+        if(isset($_POST)){
+            $juego = array(
+                'nombre' => $_POST['nombre'],
+                'descripcion' => $_POST['descripcion'],
+                'stock' => $_POST['stock'],
+                'precio' => $_POST['precio']
+            );
+            /*var_dump($GLOBALS['Compras']);
+            exit();*/
+            array_push($GLOBALS['Juegos'], $juego);
+        }
+        header('Location: ?controller=juego&function=index');
     }
 
     public static function edit($id){

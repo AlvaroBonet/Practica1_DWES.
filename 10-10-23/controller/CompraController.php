@@ -26,13 +26,19 @@ class CompraController implements Controller{
     }
 
     public static function save(){
-        /*var_dump($_POST);
-        $nombre = $_POST['nombre'];
-        $dni = $_POST['dni'];
-        $telefono = $_POST['telefono'];
-        $correo = $_POST['correo'];
-        exit();*/
-        CompraController::index();
+        if(isset($_POST)){
+            $compras = array(
+                'cliente_dni' => $_POST['cliente_dni'],
+                'juego_id' => $_POST['juego_id'],
+                'precio' => $_POST['precio'],
+                'cantidad' => $_POST['cantidad'],
+                'fecha' => $_POST['fecha']
+            );
+            /*var_dump($GLOBALS['Compras']);
+            exit();*/
+            array_push($GLOBALS['Compras'], $compras);
+        }
+        header('Location: ?controller=compra&function=index');
     }
 
     public static function edit($id){
